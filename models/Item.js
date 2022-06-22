@@ -1,4 +1,3 @@
-const images = require('./Image');
 module.exports = (sequelize, Sequelize) => {
 
     const Item = sequelize.define("item", {
@@ -28,6 +27,7 @@ module.exports = (sequelize, Sequelize) => {
                 ],
             }
         },
+
 
     });
 

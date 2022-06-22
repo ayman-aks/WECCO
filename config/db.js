@@ -49,4 +49,36 @@ db.images = require('../models/Image')(sequelize, Sequelize);
 db.messages = require('../models/Message')(sequelize, Sequelize);
 db.transactions = require('../models/Transaction')(sequelize, Sequelize);
 
+// 1:n
+db.items.hasMany(db.images);
+db.images.belongsTo(db.items);
+
+db.category.hasMany(db.items);
+db.items.belongsTo(db.category);
+
+db.customers.hasMany(db.items);
+db.items.belongsTo(db.customers);
+
+db.discussions.hasMany(db.messages);
+db.messages.belongsTo(db.discussions);
+
+db.customers.hasMany(db.messages);
+db.messages.belongsTo(db.customers);
+
+db.customers.hasMany(db.discussions);
+db.discussions.belongsTo(db.customers)
+
+
+
+
+// 1:1
+db.items.hasOne(db.transactions);
+db.transactions.belongsTo(db.items);
+
+db.items.hasOne(db.discussions);
+db.discussions.belongsTo(db.items);
+
+
+
+
 module.exports = db;

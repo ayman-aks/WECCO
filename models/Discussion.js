@@ -5,6 +5,11 @@ module.exports = (sequelize, Sequelize) => {
             type: Sequelize.INTEGER,
             autoIncrement: true,
             primaryKey: true,
+        },
+
+        cutomer_id_source: {
+            type: Sequelize.INTEGER,
+            allowNull: false
         }
     });
 

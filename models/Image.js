@@ -23,7 +23,7 @@ module.exports = (sequelize, Sequelize) => {
                     ['true', 'false']
                 ],
             }
-        }
+        },
 
     });
 
