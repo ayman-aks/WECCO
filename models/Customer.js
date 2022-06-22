@@ -5,6 +5,7 @@
 //     idCustomer
 //     email
 // }
+const bcrypt = require('bcrypt');
 module.exports = (sequelize, Sequelize) => {
 
     const Customer = sequelize.define("customer", {
@@ -36,7 +37,6 @@ module.exports = (sequelize, Sequelize) => {
         password: {
             type: Sequelize.STRING,
             allowNull: false,
-
         },
         telephone: {
             type: Sequelize.STRING,
@@ -45,13 +45,13 @@ module.exports = (sequelize, Sequelize) => {
                 is: /^7[05678][0-9]{7}$/,
             }
         }
+    }, {
+        hooks: {
+            beforeCreate: (customer, options) => {
+                customer.password = bcrypt.hashSync(customer.password, 10);
+            }
+        }
     });
-
-    // Customer.associate = models => {
-    //     Customer.hasMany(models.Item, {
-    //         onDelete: 'cascade'
-    //     });
-    // }
 
     return Customer;
 };
