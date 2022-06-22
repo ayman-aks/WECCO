@@ -7,7 +7,11 @@ const express = require("express"),
 
 router.get("/customer/message", messageController.index);
 router.post("/customer/message", messageController.add);
-router.get('/register', customerController.register);
+
+router.get('/login', customerController.login);
+router.post('/login', customerController.authentificate);
+router.post('/register', customerController.register);
+
 
 router.get("/", userController.index);
 
