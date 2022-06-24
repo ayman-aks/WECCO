@@ -1,31 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta charset="UTF-8">
-		<meta
-		name="viewport" content="width=device-width, initial-scale=1.0">
 
-		<!-- ===== CSS ===== -->
-		<link
-		rel="stylesheet" href="/assets/css/styles.css">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-		<!-- ===== BOX ICONS ===== -->
-		<link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
+    <!-- ===== CSS ===== -->
+    <link rel="stylesheet" href="/assets/css/styles.css">
 
-		<title>WEECCO - Trading books</title>
-	</head>
-	<body>
+    <!-- ===== BOX ICONS ===== -->
+    <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
 
-		<!--===== HEADER =====-->
-		<header class="l-header" id="header">
-			<nav class="nav bd-grid">
-				<div class="nav__toggle" id="nav-toggle">
-					<i class="bx bxs-grid"></i>
-				</div>
-				<a href="#" class="nav__logo">WEECCO
+    <title>WEECCO - Trading books</title>
+</head>
+
+<body>
+
+    <!--===== HEADER =====-->
+    <header class="l-header" id="header">
+        <nav class="nav bd-grid">
+            <div class="nav__toggle" id="nav-toggle">
+                <i class="bx bxs-grid"></i>
+            </div>
+            <a href="#" class="nav__logo">WEECCO
 					<span class="blue">.</span>
 				</a>
 
+<<<<<<< HEAD
 				<div class="nav__menu" id="nav-menu">
 					<ul class="nav__list">
 						<li class="nav__item">
@@ -70,7 +71,41 @@
 				<span>
 				<%= (customer.isAuthentified) ? customer.firstName + ' ' + customer.lastName : ''%>
 				</span>
+=======
+            <div class="nav__menu" id="nav-menu">
+                <ul class="nav__list">
+                    <li class="nav__item">
+                        <a href="/#home" class="nav__link active">Accueil</a>
+                    </li>
+                    <li class="nav__item">
+                        <a href="/#featured" class="nav__link">Exclusivité</a>
+                    </li>
+                    <li class="nav__item">
+                        <a href="/#women" class="nav__link">Articles</a>
+                    </li>
+                    <li class="nav__item">
+                        <a href="/#new" class="nav__link">Nouveauté</a>
+                    </li>
+                    <li class="nav__item">
+                        <a href="shop" class="nav__link">Boutique</a>
+                    </li>
 
-			</nav>
+                </ul>
+            </div>
 
-		</header>
+            <div class="nav__shop">
+                <i class="bx bx-shopping-bag"></i>
+            </div>
+            <div class="nav__shop">
+                <a href="/login">
+                    <i class='bx bx-user'></i>
+                    <span class="nav__login-button">
+						Se connecter</span>
+                </a>
+            </div>
+
+>>>>>>> 9ad2a4cd638b514b2a06b0fd13faa894e80dda83
+
+        </nav>
+
+    </header>

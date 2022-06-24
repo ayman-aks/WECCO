@@ -7,9 +7,9 @@
 // }
 const bcrypt = require('bcrypt');
 module.exports = (sequelize, Sequelize) => {
-  
+
     const Customer = sequelize.define("customer", {
-      
+
         id: {
             type: Sequelize.INTEGER,
             autoIncrement: true,
@@ -18,12 +18,12 @@ module.exports = (sequelize, Sequelize) => {
         firstName: {
             type: Sequelize.STRING,
             allowNull: false,
-            len: [2,100],
+            len: [2, 100],
         },
         lastName: {
             type: Sequelize.STRING,
             allowNull: false,
-            len: [2,50],
+            len: [2, 50],
         },
         email: {
             type: Sequelize.STRING,
@@ -45,8 +45,7 @@ module.exports = (sequelize, Sequelize) => {
                 is: /^7[05678][0-9]{7}$/,
             }
         }
-    },
-    {
+    }, {
         hooks: {
             beforeCreate: (customer, options) => {
                 customer.password = bcrypt.hashSync(customer.password, 10);
