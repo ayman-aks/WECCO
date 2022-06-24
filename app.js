@@ -1,7 +1,6 @@
-const messageController=require('./controllers/messageController')
-
-const {express,app,port}=require('./config/config'),
-    routes = require("./web").router;
+const {express,app,port}=require('./config/config');
+const routes = require("./web").router;
+const db = require('./config/db');
 
 //Define the routes for static file
 app.use("/assets",express.static('public'))
@@ -10,7 +9,6 @@ app.use("/assets",express.static('public'))
 //Define all routes in web.js
 app.use("/", routes)
 
-const db = require('./config/db');
 db.sequelize.sync();
 //Default port is 8080.
 //We can change it in config/config.js

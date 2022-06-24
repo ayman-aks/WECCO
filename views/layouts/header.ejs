@@ -41,7 +41,7 @@
 							<a href="/#new" class="nav__link">Nouveauté</a>
 						</li>
 						<li class="nav__item">
-							<a href="shop" class="nav__link">Boutique</a>
+							<a href="/shop" class="nav__link">Boutique</a>
 						</li>
 
 					</ul>
@@ -50,12 +50,26 @@
 				<div class="nav__shop">
 					<i class="bx bx-shopping-bag"></i>
 				</div>
-				<div class="nav__shop">
-					<i class='bx bx-user'></i>
-					<span class="nav__login-button">
-						Se connecter</span>
-				</div>
-
+				<% if(!customer.isAuthentified){ %>
+					<div class="nav__shop">
+						<a href="/login">
+							<i class='bx bx-user'></i>
+							<span class="nav__login-button">
+							Se connecter</span>
+						</a>
+					</div>
+				<% } else{ %>
+					<div class="nav__shop">
+						<a href="/logout">
+							<i class='bx bx-user'></i>
+							<span class="nav__login-button">
+							Deconnexion</span>
+						</a>
+					</div>
+				<% } %>
+				<span>
+				<%= (customer.isAuthentified) ? customer.firstName + ' ' + customer.lastName : ''%>
+				</span>
 
 			</nav>
 

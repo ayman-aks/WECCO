@@ -1,8 +1,19 @@
 const db = require('../config/db');
+const {app} = require('../config/config');
 const Customer = db.customers;
 const Op = db.Sequelize.Op;
 const bcrypt = require('bcrypt');
 const _ = require('underscore');
+const session = require('express-session');
+
+app.use(session({
+    secret: 'the secret',
+    resave: true,
+    saveUninitialized: true,
+    cookie:{
+        maxAge: 1000*60*60*24,
+    },
+}));
 
 module.exports = {
     //create a new customer
@@ -15,16 +26,6 @@ module.exports = {
         else{
             res.status(500).send("Une erreur s'est produite");
         }
-        // .then(customer => {
-        //     res.redirect('/login');
-        // })
-        // .catch(err => {
-        //     console.log(err);
-        //     res.status(500).send({
-        //       message:
-        //       err.message || "Some error occurred while creating the Customer."
-        //     });
-        // });
     },
 
     //view login page
@@ -36,10 +37,15 @@ module.exports = {
     authentificate: async (req, res) => {
         const customer = await Customer.findOne({where: {email: req.body.email} })
         if(customer){
-            console.log(customer);
+            // console.log(customer);
             if(await bcrypt.compare(req.body.password, customer.password)){
-                // req.session.user.id = customer.id;
-                // req.session.user.email = customer.email;
+                req.session.customerId = customer.id;
+                req.session.customerEmail = customer.email;
+                req.session.customerFirstName = customer.firstName;
+                req.session.customerLastName = customer.lastName;
+                req.session.customerTelephone = customer.telephone;
+                req.session.authentified = true;
+                console.log(req.session);
                 res.redirect('/');
             }
             else{
@@ -49,13 +55,9 @@ module.exports = {
         else{
             res.status(400).send('Email incorrect');
         }
-        // .then(customer => {
-        //     if(customer){
-        //         if(bcrypt.compare(req.body.password, customer.user)){
-        //             res.redirect('/');
-        //         }
-        //     }
-        // })
-        // .catch();
+    },
+    logout: (req, res) => {
+        req.session.destroy();
+        res.redirect('/login');
     },
 }
