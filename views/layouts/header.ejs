@@ -50,15 +50,28 @@
             <div class="nav__shop">
                 <i class="bx bx-shopping-bag"></i>
             </div>
-            <div class="nav__shop">
-                <a href="/login">
+            <% if(!customer.isAuthentified) { %>
+                <div class="nav__shop">
+                    <a href="/login">
+                        <!-- <i class='bx bx-user'></i> -->
+                        <span class="nav__login-button">
+                            Se connecter</span>
+                    </a>
+                </div>
+            <% }
+            else { %>
+                <div class="nav__shop">
+                    <a href="/logout">
+                        <!-- <i class='bx bx-user'></i> -->
+                        <span class="nav__logout-button">
+                            Se Deconnecter</span>
+                    </a>
+                </div>
+                <div class="nav__item">
                     <i class='bx bx-user'></i>
-                    <span class="nav__login-button">
-						Se connecter</span>
-                </a>
-            </div>
-
-
+                    <span><%= customer.firstName+" "+ (customer.lastName).toUpperCase()%></span>
+                </div>
+            <% } %>
         </nav>
 
     </header>

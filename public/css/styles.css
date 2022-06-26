@@ -181,6 +181,14 @@ img {
     border-radius: 29px;
 }
 
+.nav__logout-button {
+    font-size: var(--smaller-font-size);
+    background-color: #ea221e;
+    padding: 10px;
+    color: white;
+    border-radius: 29px;
+}
+
 .rond {
     background-color: red;
     width: 100px;
@@ -824,6 +832,9 @@ video {
 
 @media screen and (max-width: 960px) {
     .nav__login-button {
+        display: none;
+    }
+    .nav__logout-button {
         display: none;
     }
 }

@@ -1,6 +1,7 @@
 const db = require('../config/db');
 const {app} = require('../config/config');
 const Customer = db.customers;
+const Item = db.items;
 const Op = db.Sequelize.Op;
 const bcrypt = require('bcrypt');
 const _ = require('underscore');
@@ -20,7 +21,8 @@ module.exports = {
     register:  async (req, res) => {
         const customer = _.pick(req.body, ['firstName', 'lastName', 'telephone', 'email', 'password']);
         console.log(customer);
-        if(await Customer.create(customer)){
+        customer = await Customer.create(customer);
+        if(customer){
             res.redirect('/login'); 
         }
         else{
@@ -39,12 +41,8 @@ module.exports = {
         if(customer){
             // console.log(customer);
             if(await bcrypt.compare(req.body.password, customer.password)){
-                req.session.customerId = customer.id;
-                req.session.customerEmail = customer.email;
-                req.session.customerFirstName = customer.firstName;
-                req.session.customerLastName = customer.lastName;
-                req.session.customerTelephone = customer.telephone;
-                req.session.authentified = true;
+                req.session.customer = _.pick(customer, ['id', 'firstName', 'lastName', 'telephone', 'email']);
+                req.session.customer.isAuthentified = true;
                 console.log(req.session);
                 res.redirect('/');
             }
@@ -56,8 +54,18 @@ module.exports = {
             res.status(400).send('Email incorrect');
         }
     },
+
+    //logout
     logout: (req, res) => {
         req.session.destroy();
         res.redirect('/login');
     },
+
+    //get auth user's items
+    getItems: async (req, res) => {
+        console.log(req.session.customer);
+        const customer = await Customer.findOne({where: {email: req.session.customer.email}});
+        const items = await customer.getItems();
+        res.render("pages/test.ejs", {items, customer});
+    }
 }

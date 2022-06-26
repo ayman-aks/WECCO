@@ -10,11 +10,9 @@
 
 // module.exports=connection;
 const images = require('../models/Image');
-const items = require('../models/Item');
 
 const path = require('path');
 const Sequelize = require("sequelize");
-const Item = require('../models/Item');
 const sequelize = new Sequelize('wecco', 'wecco', 'passer', {
     host: 'localhost',
     dialect: 'mysql',
@@ -24,6 +22,9 @@ const sequelize = new Sequelize('wecco', 'wecco', 'passer', {
         max: 5,
         min: 0,
         idle: 10000
+    },
+    define: {
+        timestamps: false
     }
 });
 const db = {
@@ -42,7 +43,7 @@ const db = {
 db.Sequelize = Sequelize;
 db.sequelize = sequelize;
 db.customers = require('../models/Customer')(sequelize, Sequelize);
-db.category = require('../models/Category')(sequelize, Sequelize);
+db.categories = require('../models/Category')(sequelize, Sequelize);
 db.discussions = require('../models/Discussion')(sequelize, Sequelize);
 db.items = require('../models/Item')(sequelize, Sequelize);
 db.images = require('../models/Image')(sequelize, Sequelize);
@@ -53,8 +54,8 @@ db.transactions = require('../models/Transaction')(sequelize, Sequelize);
 db.items.hasMany(db.images);
 db.images.belongsTo(db.items);
 
-db.category.hasMany(db.items);
-db.items.belongsTo(db.category);
+db.categories.hasMany(db.items);
+db.items.belongsTo(db.categories);
 
 db.customers.hasMany(db.items);
 db.items.belongsTo(db.customers);

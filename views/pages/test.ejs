@@ -1,13 +1,24 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <h1>Page envoie message</h1>
-    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptate sapiente possimus quae expedita, sit eveniet, modi dicta quasi, temporibus iste nobis saepe? Soluta ratione delectus quos nihil, fugiat consequuntur blanditiis!</p>
-</body>
-</html>
+<%- include('../layouts/header'); -%>
+
+<main class="l-main">
+    <section class="featured section" id="featured">
+        <h2 class="section-title">MES ARTICLES</h2>
+        <% items.forEach(item => { %>
+        <div class="featured__container bd-grid">
+            <article class="books">
+                <div class="books__sale">En stock</div>
+                <div class="books__stat"><%= item.etat %></div>
+                <img src="/assets/img/livre1.png" alt="imageFeatured" class="books__img">
+                <span class="books__name"><%= item.intitule %></span>
+                <span class="books__author"><%= customer.firstName+" "+(customer.lastName).toUpperCase() %></span>
+                <span class="books__price"><%= item.prix %></span>
+                <a href="" class="button-light">Wecco
+                    <i class="bx bx-right-arrow-alt button-icon"></i>
+                </a>
+            </article>
+        </div>
+    </section>
+    <% }) %>
+</main>
+
+<%- include('../layouts/footer'); -%>

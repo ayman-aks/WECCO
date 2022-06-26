@@ -1,25 +1,13 @@
+const _ = require('underscore');
 module.exports = {
     index : (req, res) => {
-        let customer = {
-            id : req.session.customerId,
-            email : req.session.customerEmail,
-            firstName : req.session.customerFirstName,
-            lastName : req.session.customerLastName,
-            telephone : req.session.customerTelephone,
-            isAuthentified : req.session.authentified,
-        };
+        const customer = _.pick(req.session.customer, ['firstName', 'lastName', 'telephone', 'email', 'password', 'isAuthentified']);
         console.log(customer);
         res.render("pages/index.ejs", {customer});
     },
     shop : (req, res) => {
-        let customer = {
-            id : req.session.customerId,
-            email : req.session.customerEmail,
-            firstName : req.session.customerFirstName,
-            lastName : req.session.customerLastName,
-            telephone : req.session.customerTelephone,
-            isAuthentified : req.session.authentified,
-        };
+        const customer = _.pick(req.session.customer, ['firstName', 'lastName', 'telephone', 'email', 'password', 'isAuthentified']);
+        console.log(customer);
         res.render("pages/shop.ejs", {customer});
     }
 }
