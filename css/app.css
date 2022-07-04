@@ -509,7 +509,7 @@ body {
   color: #00a6ff;
   transition: color 0.5s linear; }
   .gl-link:hover {
-    color: #fa4400; }
+    color: #035e8f; }
 
 .gl-h1 {
   color: #333333;
@@ -699,7 +699,7 @@ body {
   background-color: #00a6ff;
   transition: background-color .5s ease-in; }
   .btn--e-brand:hover {
-    background-color: #fa4400; }
+    background-color: #035e8f; }
 
 .btn--e-brand-b-2 {
   color: #ffffff;
@@ -707,8 +707,8 @@ body {
   border: 2px solid #00a6ff;
   transition: background-color 0.5s ease-in, border-color 0.5s ease-in; }
   .btn--e-brand-b-2:hover {
-    background-color: #fa4400;
-    border-color: #fa4400; }
+    background-color: #035e8f;
+    border-color: #035e8f; }
 
 .btn--e-grey-b-2 {
   color: #333333;
@@ -742,7 +742,7 @@ body {
   background-color: transparent;
   transition: border-color .5s ease-in; }
   .btn--e-transparent-brand-b-2:hover {
-    border-color: #fa4400; }
+    border-color: #035e8f; }
 
 .btn--e-transparent-hover-brand-b-2 {
   color: #00a6ff;
@@ -787,8 +787,8 @@ body {
   color: #ffffff;
   transition: background-color .3s linear, border-color .3s linear; }
   .btn--e-brand-shadow:hover {
-    border-color: #fa4400;
-    background-color: #fa4400; }
+    border-color: #035e8f;
+    background-color: #035e8f; }
 
 /* Countdown Component */
 .countdown--style-special {
@@ -1578,6 +1578,52 @@ input::-ms-clear {
       .product-short__category > a:hover {
         color: #00a6ff; }
 
+/* Wecco */
+.wecco{
+  padding: 70px 0 40px 0;
+  margin-bottom: 30px
+}
+.add__wecco_container{
+  padding: 10px;
+  display: flex;
+  flex-direction: row;
+}
+.add__wecco_box{
+  background-color: #eeee;
+  height: 250px;
+  align-items:center;
+  display: flex;
+  flex-wrap: wrap;
+  align-content: center;
+  justify-content: center;
+  border-radius: 30px;
+  width: 250px;
+  margin: 6px;
+  
+}
+.add__wecco_ext{
+  margin: 80px 100px 10px 100px;
+  padding-right: 70px
+}
+.add__wecco_img {
+  width: 100px;
+  height: 100px;
+  position: absolute
+}
+
+.btn__wecco{
+  position: absolute;
+  padding: 14px;
+  right: 0;
+  font-weight: 600;
+  font-size: 12px;
+  top: 50%;
+  margin-top: 80px;
+  margin-right: 20px;
+  border: none;
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%); 
+}
 /* Checkbox, Radio Component */
 /*
   * Remember these are very important styles and make sure input checkbox always has a greater z-index from label
@@ -3505,7 +3551,7 @@ input::-ms-clear {
 .dash__link--brand > a {
   color: #00a6ff; }
   .dash__link--brand > a:hover {
-    color: #fa4400; }
+    color: #035e8f; }
 
 .dash__link--secondary > a {
   color: #333333; }
@@ -5335,7 +5381,7 @@ input::-ms-clear {
       color: #00a6ff;
       transition: color 110ms ease-in-out; }
       .is-list-active .product-m__quick-look > a:hover {
-        color: #fa4400; }
+        color: #035e8f; }
   .is-list-active .product-m__content {
     position: relative;
     -ms-flex: 0 0 66.66667%;
@@ -5756,7 +5802,7 @@ input::-ms-clear {
   font-size: 13px;
   transition: color 0.5s; }
   .mega-menu-content [class*="col-"] > ul > li > a:hover {
-    color: #fa4400; }
+    color: #035e8f; }
 
 .mega-menu-content [class*="col-"] > ul > .mega-list-title > a {
   font-weight: 700; }
