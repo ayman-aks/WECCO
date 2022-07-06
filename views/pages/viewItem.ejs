@@ -1,0 +1,43 @@
+<%- include('../layouts/header'); -%>
+<main
+class="l-main">
+<!--===== ALL PRODUCTS =====-->
+<section class="featured section container">
+	<h2 class="section-title">Article</h2>
+    <div class="row">
+        <div class="col-5">
+            <img src="/assets/img/livre1.png" alt="imageFeatured" class="books__img">
+        </div>
+        <div class="col-6">
+            <article class="books">
+                <div class="books__sale">En stock</div>
+                <span class="books__name"><%= item.intitule %></span>
+                <span class="books__author">Auteur: <%= item.author %></span>
+                <span class="books__price"><%= item.prix %></span>
+                <span class="books__owner"><%= customer.firstName+" "+(customer.lastName).toUpperCase() %></span>
+                <span class="books__description"><%= item.description %></span>
+            </article>
+        </div>
+        <a href="/sendRequest/<%= item.id%>" class="button-light">Wecco
+            <i class="bx bx-right-arrow-alt button-icon"></i>
+        </a>
+    </div>
+</section>
+
+	</div>
+
+	<div class="books__pages bd-grid">
+		<div>
+			<span class="books__pag">1</span>
+			<span class="books__pag">2</span>
+			<span class="books__pag">&#8594;
+			</span>
+		</div>
+	</div>
+
+</section>
+</main>
+
+		<!--===== FOOTER =====-->
+
+<%- include('../layouts/footer'); -%>

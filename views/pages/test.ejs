@@ -3,15 +3,15 @@
 <main class="l-main">
     <section class="featured section" id="featured">
         <h2 class="section-title">MES ARTICLES</h2>
-        <% items.forEach(item => { %>
+        <% (customer.items).forEach(item => { %>
         <div class="featured__container bd-grid">
             <article class="books">
                 <div class="books__sale">En stock</div>
                 <div class="books__stat"><%= item.etat %></div>
-                <img src="/assets/img/livre1.png" alt="imageFeatured" class="books__img">
+                <img src="/assets/img/livre<%= item.id%>.png" alt="imageFeatured" class="books__img">
                 <span class="books__name"><%= item.intitule %></span>
                 <span class="books__author"><%= customer.firstName+" "+(customer.lastName).toUpperCase() %></span>
-                <span class="books__price"><%= item.prix %></span>
+                <span class="books__price"><%= item.prix %> XOF</span>
                 <a href="" class="button-light">Wecco
                     <i class="bx bx-right-arrow-alt button-icon"></i>
                 </a>
