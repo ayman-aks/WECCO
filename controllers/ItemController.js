@@ -1,18 +1,24 @@
 const db = require('../config/db');
-const {app} = require('../config/config');
+const { app } = require('../config/config');
 const Customer = db.customers;
 const Item = db.items;
 const _ = require('underscore');
 const AuthMiddleware = require('../middlewares/AuthMiddleware');
 
 module.exports = {
-    show: async (req, res) => {
+    show: async(req, res) => {
         const item = await Item.findOne({
-            where: {id: req.params.id},
+            where: { id: req.params.id },
             include: Customer
         });
         const customer = AuthMiddleware.currentCustomer(req);
         console.log(item);
-        res.render('product-detail.ejs', {item, customer});
+        res.render('product-detail.ejs', { item, customer });
+    },
+
+    // Add items
+    addItems: (req, res) => {
+        const customer = AuthMiddleware.currentCustomer(req);
+        res.render('add_items', { customer });
     },
 }

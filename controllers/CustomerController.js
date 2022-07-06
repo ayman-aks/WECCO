@@ -1,11 +1,12 @@
 const db = require('../config/db');
-const {app} = require('../config/config');
+const { app } = require('../config/config');
 const Customer = db.customers;
 const Item = db.items;
 const Op = db.Sequelize.Op;
 const bcrypt = require('bcrypt');
 const _ = require('underscore');
 const session = require('express-session');
+const AuthMiddleware = require('../middlewares/AuthMiddleware');
 
 app.use(session({
     secret: 'the secret',
@@ -75,5 +76,7 @@ module.exports = {
         console.log(customer.items);
         // const items = await customer.getItems();
         res.render("pages/test.ejs", { customer });
-    }
+    },
+
+
 }
