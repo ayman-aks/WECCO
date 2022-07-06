@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html class="no-js" lang="en">
+
 <head>
     <meta charset="UTF-8">
     <!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]-->
@@ -11,6 +12,13 @@
 
     <!--====== Google Font ======-->
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+
+    <!--====== Add Multiples Images ======-->
+    <link rel="stylesheet" href="css/style.css">
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js'></script>
+    <script src="js/script.js"></script>
+
 
     <!--====== Vendor Css ======-->
     <link rel="stylesheet" href="css/vendor.css">
@@ -21,6 +29,7 @@
     <!--====== App ======-->
     <link rel="stylesheet" href="css/app.css">
 </head>
+
 <body class="config" id="js-scrollspy-trigger">
     <div class="preloader is-active">
         <div class="preloader__wrap">
@@ -31,7 +40,7 @@
     <!--====== Main App ======-->
     <div id="app">
         <div class="fixed-list">
-            
+
         </div>
 
         <!--====== Main Header ======-->
@@ -83,42 +92,47 @@
 
                                         <span class="js-menu-toggle"></span>
                                         <ul style="width:150px">
+<<<<<<< HEAD
                                         <% if((customer === undefined) || (!customer.isAuthentified)) { %> 
                                             <li>
+=======
+                                            <% if(!customer.isAuthentified) { %>
+                                                <li>
+>>>>>>> c8ae824566cdabb0f6b3df68178854de7de84593
 
-                                                <a href="/register">
-                                                    <i class="fas fa-user-plus u-s-m-r-6"></i>
+                                                    <a href="/register">
+                                                        <i class="fas fa-user-plus u-s-m-r-6"></i>
 
-                                                    <span>S'inscrire</span>
-                                                </a>
-                                            </li>
-                                            <li>
+                                                        <span>S'inscrire</span>
+                                                    </a>
+                                                </li>
+                                                <li>
 
-                                                <a href="/login"><i class="fas fa-lock u-s-m-r-6"></i>
+                                                    <a href="/login"><i class="fas fa-lock u-s-m-r-6"></i>
 
                                                     <span>Se connecter</span>
                                                 </a>
-                                            </li>
-                                        <% }else {%>
-                                            <li>
+                                                </li>
+                                                <% }else {%>
+                                                    <li>
 
-                                                <a href="dashboard.html">
-                                                    <i class="fas fa-user-circle u-s-m-r-6"></i>
+                                                        <a href="dashboard.html">
+                                                            <i class="fas fa-user-circle u-s-m-r-6"></i>
 
-                                                    <span><%= customer.firstName+' '+customer.lastName%></span>
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="/logout"><i class="fas fa-lock-open u-s-m-r-6"></i>
+                                                            <span><%= customer.firstName+' '+customer.lastName%></span>
+                                                        </a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="/logout"><i class="fas fa-lock-open u-s-m-r-6"></i>
 
                                                     <span>Déconnexion</span>
                                                 </a>
-                                            </li>
-                                        <% } %>
+                                                    </li>
+                                                    <% } %>
                                         </ul>
                                         <!--====== End - Dropdown ======-->
                                     </li>
-                                    
+
                                     <li data-tooltip="tooltip" data-placement="left" title="Contact">
 
                                         <a href="tel:+221778801800"><i class="fas fa-phone-volume"></i></a></li>
@@ -127,7 +141,7 @@
                                         <a href="mailto:contact@wecco.com"><i class="far fa-envelope"></i></a>
                                     </li>
 
-                                        
+
                                 </ul>
                                 <!--====== End - List ======-->
                             </div>
@@ -413,7 +427,8 @@
 
                                                                 <a class="u-d-block" href="shop-side-version-2.html">
 
-                                                                    <img class="u-img-fluid u-d-block" src="images/banners/banner-mega-0.jpg" alt=""></a></div>
+                                                                    <img class="u-img-fluid u-d-block" src="images/banners/banner-mega-0.jpg" alt=""></a>
+                                                            </div>
                                                         </div>
                                                     </div>
                                                     <!--====== End - Mega Menu Row ======-->
@@ -431,14 +446,16 @@
 
                                                                 <a class="u-d-block" href="shop-side-version-2.html">
 
-                                                                    <img class="u-img-fluid u-d-block" src="images/banners/banner-mega-1.jpg" alt=""></a></div>
+                                                                    <img class="u-img-fluid u-d-block" src="images/banners/banner-mega-1.jpg" alt=""></a>
+                                                            </div>
                                                         </div>
                                                         <div class="col-lg-6 mega-image">
                                                             <div class="mega-banner">
 
                                                                 <a class="u-d-block" href="shop-side-version-2.html">
 
-                                                                    <img class="u-img-fluid u-d-block" src="images/banners/banner-mega-2.jpg" alt=""></a></div>
+                                                                    <img class="u-img-fluid u-d-block" src="images/banners/banner-mega-2.jpg" alt=""></a>
+                                                            </div>
                                                         </div>
                                                     </div>
                                                     <!--====== End - Mega Menu Row ======-->
@@ -615,14 +632,16 @@
 
                                                                 <a class="u-d-block" href="shop-side-version-2.html">
 
-                                                                    <img class="u-img-fluid u-d-block" src="images/banners/banner-mega-3.jpg" alt=""></a></div>
+                                                                    <img class="u-img-fluid u-d-block" src="images/banners/banner-mega-3.jpg" alt=""></a>
+                                                            </div>
                                                         </div>
                                                         <div class="col-lg-3 mega-image">
                                                             <div class="mega-banner">
 
                                                                 <a class="u-d-block" href="shop-side-version-2.html">
 
-                                                                    <img class="u-img-fluid u-d-block" src="images/banners/banner-mega-4.jpg" alt=""></a></div>
+                                                                    <img class="u-img-fluid u-d-block" src="images/banners/banner-mega-4.jpg" alt=""></a>
+                                                            </div>
                                                         </div>
                                                     </div>
                                                     <!--====== End - Mega Menu Row ======-->
@@ -640,21 +659,24 @@
 
                                                                 <a class="u-d-block" href="shop-side-version-2.html">
 
-                                                                    <img class="u-img-fluid u-d-block" src="images/banners/banner-mega-5.jpg" alt=""></a></div>
+                                                                    <img class="u-img-fluid u-d-block" src="images/banners/banner-mega-5.jpg" alt=""></a>
+                                                            </div>
                                                         </div>
                                                         <div class="col-lg-4 mega-image">
                                                             <div class="mega-banner">
 
                                                                 <a class="u-d-block" href="shop-side-version-2.html">
 
-                                                                    <img class="u-img-fluid u-d-block" src="images/banners/banner-mega-6.jpg" alt=""></a></div>
+                                                                    <img class="u-img-fluid u-d-block" src="images/banners/banner-mega-6.jpg" alt=""></a>
+                                                            </div>
                                                         </div>
                                                         <div class="col-lg-4 mega-image">
                                                             <div class="mega-banner">
 
                                                                 <a class="u-d-block" href="shop-side-version-2.html">
 
-                                                                    <img class="u-img-fluid u-d-block" src="images/banners/banner-mega-7.jpg" alt=""></a></div>
+                                                                    <img class="u-img-fluid u-d-block" src="images/banners/banner-mega-7.jpg" alt=""></a>
+                                                            </div>
                                                         </div>
                                                     </div>
                                                     <!--====== End - Mega Menu Row ======-->
@@ -831,14 +853,16 @@
 
                                                                 <a class="u-d-block" href="shop-side-version-2.html">
 
-                                                                    <img class="u-img-fluid u-d-block" src="images/banners/banner-mega-8.jpg" alt=""></a></div>
+                                                                    <img class="u-img-fluid u-d-block" src="images/banners/banner-mega-8.jpg" alt=""></a>
+                                                            </div>
                                                         </div>
                                                         <div class="col-lg-6 mega-image">
                                                             <div class="mega-banner">
 
                                                                 <a class="u-d-block" href="shop-side-version-2.html">
 
-                                                                    <img class="u-img-fluid u-d-block" src="images/banners/banner-mega-9.jpg" alt=""></a></div>
+                                                                    <img class="u-img-fluid u-d-block" src="images/banners/banner-mega-9.jpg" alt=""></a>
+                                                            </div>
                                                         </div>
                                                     </div>
                                                     <!--====== End - Mega Menu Row ======-->
@@ -907,19 +931,19 @@
 
                                         <span class="js-menu-toggle"></span>
                                         <ul style="width:170px">
-                                        <li class="has-dropdown has-dropdown--ul-left-100">
+                                            <li class="has-dropdown has-dropdown--ul-left-100">
 
-                                                <a href="shop-list-full.html" >Primaire</a>
+                                                <a href="shop-list-full.html">Primaire</a>
 
                                             </li>
                                             <li class="has-dropdown has-dropdown--ul-left-100">
 
-                                                <a href="shop-list-full.html" >College</a>
+                                                <a href="shop-list-full.html">College</a>
 
                                             </li>
                                             <li class="has-dropdown has-dropdown--ul-left-100">
 
-                                                <a href="shop-list-full.html" >Lycée</a>
+                                                <a href="shop-list-full.html">Lycée</a>
 
                                             </li>
                                         </ul>
@@ -936,7 +960,7 @@
                                     <li>
 
                                         <a href="about.html">A PROPOS</a></li>
-                                        <li>
+                                    <li>
 
                                         <a href="contact.html">CONTACT</a></li>
                                 </ul>
@@ -990,7 +1014,8 @@
 
                                                             <a class="mini-product__link" href="/">
 
-                                                                <img class="u-img-fluid" src="images/product/electronic/product3.jpg" alt=""></a></div>
+                                                                <img class="u-img-fluid" src="images/product/electronic/product3.jpg" alt=""></a>
+                                                        </div>
                                                         <div class="mini-product__info-wrapper">
 
                                                             <span class="mini-product__category">

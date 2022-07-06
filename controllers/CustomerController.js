@@ -1,5 +1,5 @@
 const db = require('../config/db');
-const {app} = require('../config/config');
+const { app } = require('../config/config');
 const Customer = db.customers;
 const Item = db.items;
 const Op = db.Sequelize.Op;
@@ -13,8 +13,8 @@ app.use(session({
     secret: 'the secret',
     resave: true,
     saveUninitialized: true,
-    cookie:{
-        maxAge: 1000*60*60*24,
+    cookie: {
+        maxAge: 1000 * 60 * 60 * 24,
     },
 }));
 
@@ -23,7 +23,7 @@ module.exports = {
     registerView: (req, res) => {
         const customer = {};
         customer.isAuthentified = false;
-        res.render('signup.ejs', {customer});
+        res.render('signup.ejs', { customer });
     },
 
     register:  (req, res) => {
@@ -49,13 +49,13 @@ module.exports = {
     login: (req, res) => {
         const customer = {};
         customer.isAuthentified = false;
-        res.render("signin.ejs", {customer});
+        res.render("signin.ejs", { customer });
     },
 
     //authentification
-    authentificate: async (req, res) => {
-        const customer = await Customer.findOne({where: {email: req.body.email} })
-        if(customer){
+    authentificate: async(req, res) => {
+        const customer = await Customer.findOne({ where: { email: req.body.email } })
+        if (customer) {
             // console.log(customer);
             if(await bcrypt.compare(req.body.password, customer.password)){
                 req.session.customer = _.pick(customer, ['id', 'firstName', 'lastName', 'telephone', 'email']);
@@ -89,17 +89,14 @@ module.exports = {
     },
 
     //get auth user's items
-    getItems: async (req, res) => {
+    getItems: async(req, res) => {
         console.log(req.session.customer);
-        const customer = await Customer.findOne(
-            {where: {email: req.session.customer.email},
+        const customer = await Customer.findOne({
+            where: { email: req.session.customer.email },
             include: Item,
         });
         console.log(customer.items);
         // const items = await customer.getItems();
         res.render("pages/test.ejs", {customer});
     },
-
-    
-
 }

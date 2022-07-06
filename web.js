@@ -12,6 +12,8 @@ const express = require("express"),
 router.get("/customer/message", messageController.index);
 router.post("/customer/message", messageController.add);
 
+router.get("/add", customerController.addItems);
+
 router.get('/login', authMiddleware.isAuth, customerController.login);
 router.post('/login', authMiddleware.isAuth, customerController.authentificate);
 router.get('/register', authMiddleware.isAuth, customerController.registerView);
@@ -26,6 +28,4 @@ router.get("/myTrades/", authMiddleware.isNotAuth, requestTransactionController.
 
 router.get("/shop", authMiddleware.isNotAuth, userController.shop);
 
-module.exports = {router}
-
-
+module.exports = { router }
