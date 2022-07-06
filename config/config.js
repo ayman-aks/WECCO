@@ -1,10 +1,13 @@
-const express=require('express')
-const app=express()
+const express=require('express');
+const app=express();
+const layouts = require('express-ejs-layouts');
 const bodyParser=require('body-parser');
 const port=8080
 const APP_URL = `http://localhost:${port}`;
 //Define static files
 app.use(express.static('public'));
+
+app.use(layouts);
 const cors = require('cors');
 let corsOptions = {
     origin: "http://localhost:8080" // URL of the frontend

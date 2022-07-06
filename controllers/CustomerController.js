@@ -18,6 +18,11 @@ app.use(session({
 
 module.exports = {
     //create a new customer
+    registerView: (req, res) => {
+        const customer = {};
+        customer.isAuthentified = false;
+        res.render('signup.ejs', {customer});
+    },
     register:  async (req, res) => {
         const customer = _.pick(req.body, ['firstName', 'lastName', 'telephone', 'email', 'password']);
         console.log(customer);
@@ -32,7 +37,9 @@ module.exports = {
 
     //view login page
     login: (req, res) => {
-        res.render("pages/login.ejs", {layout: false});
+        const customer = {};
+        customer.isAuthentified = false;
+        res.render("signin.ejs", {customer});
     },
 
     //authentification
@@ -40,7 +47,7 @@ module.exports = {
         const customer = await Customer.findOne({where: {email: req.body.email} })
         if(customer){
             // console.log(customer);
-            if(await bcrypt.compare(req.body.password, customer.password)){
+            if(bcrypt.compare(req.body.password, customer.password)){
                 req.session.customer = _.pick(customer, ['id', 'firstName', 'lastName', 'telephone', 'email']);
                 req.session.customer.isAuthentified = true;
                 console.log(req.session);
@@ -64,8 +71,12 @@ module.exports = {
     //get auth user's items
     getItems: async (req, res) => {
         console.log(req.session.customer);
-        const customer = await Customer.findOne({where: {email: req.session.customer.email}});
-        const items = await customer.getItems();
-        res.render("pages/test.ejs", {items, customer});
+        const customer = await Customer.findOne(
+            {where: {email: req.session.customer.email},
+            include: Item,
+        });
+        console.log(customer.items);
+        // const items = await customer.getItems();
+        res.render("pages/test.ejs", {customer});
     }
 }

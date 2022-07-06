@@ -18,6 +18,16 @@ module.exports = (sequelize, Sequelize) => {
             allowNull: false
         },
 
+        author: {
+            type: Sequelize.STRING,
+            allowNull: false,
+        },
+
+        description: {
+            type: Sequelize.TEXT,
+            allowNull: true,
+        },
+
         etat: {
             type: Sequelize.STRING,
             defaultValue: "true",

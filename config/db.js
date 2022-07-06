@@ -1,14 +1,4 @@
-// const mysql      = require('mysql');
-// const connection = mysql.createConnection({
-//   host     : 'localhost',
-//   user     : 'wecco',
-//   password : 'passer',
-//   database : 'express'
-// });
 
-// connection.connect();
-
-// module.exports=connection;
 const images = require('../models/Image');
 
 const path = require('path');
@@ -27,17 +17,7 @@ const sequelize = new Sequelize('wecco', 'wecco', 'passer', {
         timestamps: false
     }
 });
-const db = {
-
-    // Customer: require(path.join(__dirname, "../models/Customer"))(sequelize, Sequelize),
-    // Category: require(path.join(__dirname, "../models/Category"))(sequelize, Sequelize),
-    // Discussion: require(path.join(__dirname, "../models/Discussion"))(sequelize, Sequelize),
-    // Image: require(path.join(__dirname, "../models/Image"))(sequelize, Sequelize),
-    // Item: require(path.join(__dirname, "../models/Item"))(sequelize, Sequelize),
-    // Message: require(path.join(__dirname, "../models/Message"))(sequelize, Sequelize),
-    // Transaction: require(path.join(__dirname, "../models/Transaction"))(sequelize, Sequelize),
-
-};
+const db = {};
 
 
 db.Sequelize = Sequelize;
@@ -49,6 +29,7 @@ db.items = require('../models/Item')(sequelize, Sequelize);
 db.images = require('../models/Image')(sequelize, Sequelize);
 db.messages = require('../models/Message')(sequelize, Sequelize);
 db.transactions = require('../models/Transaction')(sequelize, Sequelize);
+db.requestTransactions = require('../models/RequestTransaction')(sequelize, Sequelize);
 
 // 1:n
 db.items.hasMany(db.images);
@@ -79,7 +60,11 @@ db.transactions.belongsTo(db.items);
 db.items.hasOne(db.discussions);
 db.discussions.belongsTo(db.items);
 
+db.customers.hasOne(db.requestTransactions);
+db.requestTransactions.belongsTo(db.customers);
 
+db.items.hasOne(db.requestTransactions);
+db.requestTransactions.belongsTo(db.items);
 
 
 module.exports = db;

@@ -1,0 +1,70 @@
+<%- include('../layouts/header'); -%>
+
+<main class="l-main">
+    <section class="featured section" id="featured">
+        <h2 class="section-title">MES DEMANDES</h2>
+        <table border="1" align="center" cellspacing="0" cellpadding="5">
+            <thead>
+                <tr>
+                    <th>Livre Concerné</th>
+                    <th>Prix proposé</th>
+                    <th>Date de la demande</th>
+                    <th>Proposeur</th>
+                    <th>Livre proposé</th>
+                    <th>Etat</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% requests.forEach( request => { %>
+                    <tr>
+                        <td>
+                            <article class="books">
+                                <img src="/assets/img/livre<%= (request.item).id%>.png" alt="imageFeatured" class="books__img">
+                                <span class="books__name"><%= (request.item).intitule %></span>
+                                <span class="books__author"><%= (request.item).author %></span>
+                                <span class="books__price"><%= (request.item).prix %> XOF</span>
+                            </article>
+                        </td>
+                        <td>
+                            <span class="books__price"><%= (request.prix == 0) ? request.prix : 0 %> XOF</span>
+                        </td>
+                        <td>
+                            <span class="">
+                                <%= (request.date).toLocaleDateString('sen-SN', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric', hour: 'numeric', minute: 'numeric', second: 'numeric' }) %>
+                            </span>
+                        </td>
+                        <td>
+                            <span class="books__author">
+                                <%= (request.customer).firstName+" "+((request.customer).lastName).toUpperCase() %>
+                            </span>
+                        </td>
+                        <td>
+                            <article class="books">
+                                <!-- <div class="books__stat">Neuf</div> -->
+                                <img src="/assets/img/livre6.png" alt="imageFeatured" class="books__img">
+                                <span class="books__name">This is a book</span>
+                                <span class="books__author">This is a author name</span>
+                                <span class="books__price">18 900  XOF</span>
+                                <!-- <a href="" class="button-light">Wecco
+                                    <i class="bx bx-right-arrow-alt button-icon"></i>
+                                </a> -->
+                            </article>
+                        </td>
+                        <td>
+                            <span>
+                                <%= request.etat %>
+                            </span>
+                        </td>
+                        <!-- <td>
+                            <span>
+
+                            </span>
+                        </td> -->
+                    </tr>
+                <% }) %>
+            </tbody>
+        </table>
+        
+</main>
+
+<%- include('../layouts/footer'); -%>

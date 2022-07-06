@@ -9,7 +9,7 @@ app.use("/assets",express.static('public'))
 //Define all routes in web.js
 app.use("/", routes)
 
-db.sequelize.sync();
+db.sequelize.sync({alter: true});
 //Default port is 8080.
 //We can change it in config/config.js
 app.listen(port);
