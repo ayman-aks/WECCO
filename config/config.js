@@ -2,7 +2,8 @@ const express=require('express');
 const app=express();
 const layouts = require('express-ejs-layouts');
 const bodyParser=require('body-parser');
-const port=8080
+const port=8080;
+const fileUpload = require('express-fileupload');
 const APP_URL = `http://localhost:${port}`;
 //Define static files
 app.use(express.static('public'));
@@ -24,7 +25,14 @@ app.set('view engine', 'ejs');
 in a middleware before your handlers,
 available under the req.body property.
 */
+// app.use(require('../middlewares/FlashMiddleWare'));
+app.use(fileUpload({
+    createParentPath: true,
+    limits: {
+        
+    }
+}));
+
 app.use(bodyParser.urlencoded({extended:true}));
 app.use(bodyParser.json());
-
 module.exports= {express,app,port};

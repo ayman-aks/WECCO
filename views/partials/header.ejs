@@ -83,7 +83,7 @@
 
                                         <span class="js-menu-toggle"></span>
                                         <ul style="width:150px">
-                                        <% if(!customer.isAuthentified) { %> 
+                                        <% if((customer === undefined) || (!customer.isAuthentified)) { %> 
                                             <li>
 
                                                 <a href="/register">

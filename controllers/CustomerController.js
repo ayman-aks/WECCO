@@ -6,6 +6,8 @@ const Op = db.Sequelize.Op;
 const bcrypt = require('bcrypt');
 const _ = require('underscore');
 const session = require('express-session');
+const flash = require('../services/flash');
+const { result } = require('underscore');
 
 app.use(session({
     secret: 'the secret',
@@ -23,16 +25,24 @@ module.exports = {
         customer.isAuthentified = false;
         res.render('signup.ejs', {customer});
     },
-    register:  async (req, res) => {
+
+    register:  (req, res) => {
         const customer = _.pick(req.body, ['firstName', 'lastName', 'telephone', 'email', 'password']);
         console.log(customer);
-        customer = await Customer.create(customer);
-        if(customer){
-            res.redirect('/login'); 
-        }
-        else{
+        Customer.create(customer).then((customer) => {
+            req.session.customer = _.pick(customer, ['id', 'firstName', 'lastName', 'telephone', 'email']);
+            req.session.customer.isAuthentified = true;
+            res.redirect('/');
+        }).catch(e => {
+            console.log(e);
             res.status(500).send("Une erreur s'est produite");
-        }
+        });
+        // if(customer){
+        //     res.redirect('/login'); 
+        // }
+        // else{
+        //     res.status(500).send("Une erreur s'est produite");
+        // }
     },
 
     //view login page
@@ -47,18 +57,28 @@ module.exports = {
         const customer = await Customer.findOne({where: {email: req.body.email} })
         if(customer){
             // console.log(customer);
-            if(bcrypt.compare(req.body.password, customer.password)){
+            if(await bcrypt.compare(req.body.password, customer.password)){
                 req.session.customer = _.pick(customer, ['id', 'firstName', 'lastName', 'telephone', 'email']);
                 req.session.customer.isAuthentified = true;
                 console.log(req.session);
                 res.redirect('/');
             }
             else{
-                res.status(400).send('Mot de passe invalide');
+                flash.add(req, 'email', req.body.email);
+                flash.addError(req, 'email', "Email ou mot de passe incorrect");
+                res.locals.flash = req.session.flash;
+                const customer = {};
+                customer.isAuthentified = false;
+                res.status(400).render('signin.ejs', {customer});
             }
         }
         else{
-            res.status(400).send('Email incorrect');
+            flash.add(req, 'email', req.body.email);
+            flash.addError(req, 'email', "Email ou mot de passe incorrect");
+            res.locals.flash = req.session.flash;
+            const customer = {};
+            customer.isAuthentified = false;
+            res.status(400).render('signin.ejs', {customer});
         }
     },
 
@@ -78,5 +98,8 @@ module.exports = {
         console.log(customer.items);
         // const items = await customer.getItems();
         res.render("pages/test.ejs", {customer});
-    }
+    },
+
+    
+
 }

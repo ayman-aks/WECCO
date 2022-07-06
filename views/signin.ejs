@@ -54,20 +54,28 @@
                         <div class="l-f-o">
                             <div class="l-f-o__pad-box">
                                 <h1 class="gl-h1">SE CONNECTER</h1>
-
-                                <span class="gl-text u-s-m-b-30">Vous avez déjà un compte ? Se connecter</span>
+                                <div class="alert alert-danger" style=" color: white; background-color: rgb(224, 88, 88)">
+                                    <% if(locals.flash !== undefined) {%>
+                                        <ul>
+                                        <% for(let error in locals.flash.errors){%>
+                                          <li><%= locals.flash.errors[error]%></li>
+                                        <%}%>
+                                        </ul>
+                                    <%}%>
+                                </div>
                                 <form class="l-f-o__form" method="post" action="/login">
                                     <div class="u-s-m-b-30">
-
                                         <label class="gl-label" for="login-email">E-MAIL *</label>
 
-                                        <input class="input-text input-text--primary-style" type="text" id="login-email" placeholder="Saisissez votre Adresse E-mail" name="email">
+                                        <input class="input-text input-text--primary-style" type="text" id="login-email" placeholder="Saisissez votre Adresse E-mail" name="email" value="<%=(locals.flash !== undefined) ? locals.flash.email : '' %>">
+                                        <!-- <span class="flash-error"></span> -->
                                     </div>
                                     <div class="u-s-m-b-30">
 
                                         <label class="gl-label" for="login-password">MOT DE PASSE *</label>
 
                                         <input class="input-text input-text--primary-style" type="password" id="login-password" placeholder="Saisissez votre Mot de passe" name="password">
+                                        <span class="flash-error"></span>
                                     </div>
                                     <div class="gl-inline">
                                         <div class="u-s-m-b-30">
